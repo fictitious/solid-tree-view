@@ -1,4 +1,5 @@
-import { createState, createContext, ComponentProps, batch } from "solid-js";
+import { createContext, ComponentProps, batch } from "solid-js";
+import { createStore } from "solid-js/store";
 import { TTree } from "../generateTree";
 import { deleteMany, getAllDescendants } from "../Node/utils";
 
@@ -29,7 +30,7 @@ export const TreeContext = createContext<TTreeContext>([
 ]);
 
 export function TreeProvider(props: TreeState & { children: any }) {
-  const [state, setState] = createState({
+  const [state, setState] = createStore({
     tree: props.tree,
     nextId: props.nextId,
   });
